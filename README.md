@@ -16,7 +16,6 @@ Sample Image
 To Do
 -----
 TIP has limited functionality. The following capabilities are yet to be implemented:
-* File specification through command-line argument
 * Max resolution via command line argument
 * Proper PNG support (issue due to additional alpha channel
 * Help menu, about screen

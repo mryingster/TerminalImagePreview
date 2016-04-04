@@ -1,11 +1,16 @@
 #!/usr/bin/python
-
-import Image, sys
 # resize an image using the PIL image library
+from PIL import Image
+import sys
 
-# open test image file
+# Check argument length
+if len(sys.argv) < 2:
+    print("Please specify an image")
+    exit()
+
+# open image file
 # (.bmp,.jpg,.png,.gif supported by PIL)
-imageFile = "TestImage.jpg"
+imageFile = sys.argv[1]
 img = Image.open(imageFile)
 
 # adjust width and height to your needs - 32 MAX
