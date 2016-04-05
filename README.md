@@ -16,6 +16,4 @@ Sample Image
 To Do
 -----
 TIP has limited functionality. The following capabilities are yet to be implemented:
-* Max resolution via command line argument
-* Help menu, about screen
-* Proper image rotation from meta-data?
+* Proper image rotation from meta-data
