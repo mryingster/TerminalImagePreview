@@ -9,11 +9,11 @@ if len(sys.argv) < 2:
     exit()
 
 # open image file
-# (.bmp,.jpg,.png,.gif supported by PIL)
+# (.bmp, .jpg, .png, .gif supported by PIL)
 imageFile = sys.argv[1]
 img = Image.open(imageFile)
 
-# adjust width and height to your needs - 32 MAX
+# adjust image width and height
 maxSize = 64
 width = img.size[0]
 height = img.size[1]
@@ -28,13 +28,14 @@ height =int(height / ratio)
 
 img = img.resize((width, height), Image.ANTIALIAS)
 
+# Print image to screen using ANSI colors (216 colors)
 pixels = img.load()
 for y in range(0, img.size[1], 2):
     for x in range(img.size[0]):
-        r, g, b = pixels[x, y]
+        r, g, b = pixels[x, y][0:3]
         backgroundCode = (16 + (36 * int(r/51)) + (6 * int(g/51)) + int(b/51))
 
-        r, g, b = pixels[x, y+1]
+        r, g, b = pixels[x, y+1][0:3]
         forgroundCode = (16 + (36 * int(r/51)) + (6 * int(g/51)) + int(b/51))
 
         #sys.stdout.write("%3d;%3d;%3d %x\n" % (r, g, b, colorCode)) # DEBUG

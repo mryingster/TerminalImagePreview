@@ -17,5 +17,5 @@ To Do
 -----
 TIP has limited functionality. The following capabilities are yet to be implemented:
 * Max resolution via command line argument
-* Proper PNG support (issue due to additional alpha channel
 * Help menu, about screen
+* Proper image rotation from meta-data?
