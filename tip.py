@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # resize an image using the PIL image library
 from PIL import Image
 import sys, os
@@ -66,7 +66,11 @@ def main(*inputArgs):
     # Process each input image
     for path in inputFiles:
         # open image file
-        img = Image.open(path)
+        try:
+            img = Image.open(path)
+        except:
+            warning("Unable to open image, %s." % path)
+            continue
 
         # adjust image width and height
         width = img.size[0]
@@ -83,9 +87,11 @@ def main(*inputArgs):
         # Make sure height is even number!
         if height % 2 != 0: height += 1
 
+        # Resize
         img = img.resize((width, height), Image.ANTIALIAS)
 
         # Print image to screen using ANSI colors (216 colors)
+        print(path)
         pixels = img.load()
         for y in range(0, img.size[1], 2):
             for x in range(img.size[0]):
@@ -94,6 +100,7 @@ def main(*inputArgs):
                 #sys.stdout.write("%3d;%3d;%3d %x\n" % (r, g, b, colorCode)) # DEBUG
                 sys.stdout.write("\x1b[48;5;%d;38;5;%dm%s\x1b[0m" % (backgroundCode, forgroundCode, u"\u2584"))
             print("")
+        print("")
 
 if __name__ == "__main__":
     sys.argv.pop(0)
