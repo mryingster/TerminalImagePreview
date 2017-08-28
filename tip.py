@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-# resize an image using the PIL image library
-from PIL import Image
 import sys, os
 
 def error(message):
@@ -9,6 +7,11 @@ def error(message):
 
 def warning(message):
     print("WARNING: "+message)
+
+try:
+    from PIL import Image
+except:
+    error("Unable to load 'pil', or 'pillow'. Try 'sudo pip install pillow'.")
 
 def getFileExtension(fileName):
     import re
